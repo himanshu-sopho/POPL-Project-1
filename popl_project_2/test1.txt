@@ -1,0 +1,36 @@
+
+
+.data
+num: .word 9
+var: .word 5
+
+
+.text
+
+addi $s7, $zero,7
+addi $s0, $zero, 0
+addi $s4, $zero, 0
+add  $s1, $s1, $zero
+
+loop:
+beq $s7, $s0, ls
+addi $s0, $s0, 1
+j loop
+
+
+ls:
+sw $s0 , 4($s1)
+lw $s2, 4($s1)
+sw $s2, var
+lw $s3, var 
+lw $s3, var
+
+loop2:
+addi $t0, $zero, 1
+sub $s0, $s0 ,$t0
+lw $s7, num
+bne $s1, $s0, loop2
+
+j exit
+
+exit:

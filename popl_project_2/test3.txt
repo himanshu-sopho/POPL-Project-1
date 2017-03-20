@@ -1,0 +1,29 @@
+
+
+.data
+    num: .word 9
+var:    .word 5
+
+
+.text
+
+       addi   $t7,   $t7,   4
+  addi $t1, $t1, 35
+         nor $t1, $t1, $t1
+loop:
+     addi $t0, $t0,1
+        mul $t1,$t1,$t7
+    bne $t0 ,$t7, loop
+
+
+  j mc
+mc1:
+
+  add $t0, $t0, $zero
+mc:
+   lw $s0, num
+sw $t0,num
+     slti $t1,$t0, 1
+halt
+
+
